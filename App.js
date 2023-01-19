@@ -6,6 +6,7 @@ function makeMosaic(){
 	const materialImages = materialImagesColors[0];
 	const imageColors = materialImagesColors[1];
 	const completeImage = getMosaicImage(subImage,materialImages,imageColors);
+	console.log("makeMosaic");
 }
 const submitButton = document.getElementById("submitButton");
 submitButtom.addEventListener('click', makeMosaic);
