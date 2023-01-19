@@ -1,12 +1,12 @@
 function makeMosaic(){
 	const subImage_origin = document.getElementById("subImage").files[0];
+	console.log("makeMosaic");
 	const subImage = resizeImage(subImage_origin);
 	const materialImage_origin = document.getElementById("materialImage").files;
 	const materialImagesColors = resizeGetColor(materialImage_origin)[0];
 	const materialImages = materialImagesColors[0];
 	const imageColors = materialImagesColors[1];
 	const completeImage = getMosaicImage(subImage,materialImages,imageColors);
-	console.log("makeMosaic");
 }
 const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', makeMosaic);
