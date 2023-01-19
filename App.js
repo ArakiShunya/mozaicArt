@@ -1,5 +1,3 @@
-console.log("check");
-
 function makeMosaic(){
 	const subImage_origin = document.getElementById("subImage").files[0];
 	const subImage = resizeImage(subImage_origin);
@@ -11,7 +9,7 @@ function makeMosaic(){
 	console.log("makeMosaic");
 }
 const submitButton = document.getElementById("submitButton");
-submitButtom.addEventListener('click', makeMosaic);
+submitButton.addEventListener('click', makeMosaic);
 
 function resizeImage(img){
 	let cv = document.createElement('canvas');
