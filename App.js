@@ -1,6 +1,5 @@
 function makeMosaic(){
 	const subImage_origin = document.getElementById("subImage").files[0];
-	console.log(subImage_origin);
 	const subImage = resizeImage(subImage_origin);
 	console.log(subImage);
 	const materialImage_origin = document.getElementById("materialImage").files;
@@ -16,6 +15,7 @@ submitButton.addEventListener('click', makeMosaic);
 
 function resizeImage(img){
 	let cv = document.createElement('canvas');
+	console.log("cavas");
 	cv.width = 45;
 	cv.height = 30;
 	let color = Array(cv.width * cv.height);
