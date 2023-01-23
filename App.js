@@ -1,5 +1,6 @@
 function makeMosaic(){
 	const subImage_origin = document.getElementById("subImage").files[0];
+	test(subImage_origin);
 	const subImage = resizeImage(subImage_origin);
 	console.log(subImage);
 	const materialImage_origin = document.getElementById("materialImage").files;
@@ -73,4 +74,14 @@ function getMosaicImage(subImage, images, colors){
 		}
 	}
 }
+
+function test(img){
+	const cv = docyment.getElementById("cv");
+	const ct = cv.getContext('2d');
+	const cv.width = 100;
+	const cv.height = 100;
+	ct.drawImage(img,0,0);
+}
+
+
 
