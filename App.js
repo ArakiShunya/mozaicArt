@@ -14,8 +14,8 @@ const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', makeMosaic);
 
 function resizeImage(img){
-	let cv = document.createElement('canvas');
 	console.log("cavas");
+	let cv = document.createElement('canvas');
 	cv.width = 45;
 	cv.height = 30;
 	let color = Array(cv.width * cv.height);
