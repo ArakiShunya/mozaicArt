@@ -82,7 +82,7 @@ function test(img){
     reader.onload = () => {
       image.src = reader.result;
     }
-	let cvTest = docyment.getElementById("cvTest");
+	let cvTest = document.getElementById("cvTest");
 	const ct = cvTest.getContext('2d');
 	cvTest.width = 100;
 	cvTest.height = 100;
