@@ -84,8 +84,8 @@ function test(img){
     }
 	let cvTest = docyment.getElementById("cvTest");
 	const ct = cvTest.getContext('2d');
-	const cvTest.width = 100;
-	const cvTest.height = 100;
+	cvTest.width = 100;
+	cvTest.height = 100;
 	ct.drawImage(img,0,0);
 }
 
