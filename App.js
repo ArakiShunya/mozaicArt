@@ -1,5 +1,6 @@
 function makeMosaic(){
 	const subImage_origin = document.getElementById("subImage").files[0];
+	
 	test(subImage_origin);
 	const subImage = resizeImage(subImage_origin);
 	console.log(subImage);
@@ -76,6 +77,11 @@ function getMosaicImage(subImage, images, colors){
 }
 
 function test(img){
+    let reader = new FileReader();
+    reader.readAsDataURL(img);
+    reader.onload = () => {
+      image.src = reader.result;
+    }
 	const cv = docyment.getElementById("cv");
 	const ct = cv.getContext('2d');
 	const cv.width = 100;
