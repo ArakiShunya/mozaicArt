@@ -16,7 +16,7 @@ const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', makeMosaic);
 
 function resizeImage(img){
-	console.log("cavas");
+	console.log("canvas");
 	let cv = document.createElement('canvas');
 	cv.width = 45;
 	cv.height = 30;
@@ -82,7 +82,7 @@ function test(img){
     reader.onload = () => {
       image.src = reader.result;
     }
-	let cvTest = docyment.getElementById("cv");
+	let cvTest = docyment.getElementById("cvTest");
 	const ct = cvTest.getContext('2d');
 	const cvTest.width = 100;
 	const cvTest.height = 100;
