@@ -80,7 +80,7 @@ function test(img){
     let reader = new FileReader();
     reader.readAsDataURL(img);
     reader.onload = () => {
-      image.src = reader.result;
+      img.src = reader.result;
     }
 	let cvTest = document.getElementById("cvTest");
 	const ct = cvTest.getContext('2d');
