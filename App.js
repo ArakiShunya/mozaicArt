@@ -21,7 +21,7 @@ function resizeImage(img){
 	cv.width = 45;
 	cv.height = 30;
 	let color = Array(cv.width * cv.height);
-	const ct =cv.getContext('2d');
+	let ct =cv.getContext('2d');
 	ct.drawImage(img, 0, 0);
 	const image = ct.getImageData(0, 0, cv.width, cv.height);
 	for (let i = 0; i < color.length; i++){
@@ -38,7 +38,7 @@ function resizeGetColor(img){
 	let cv = document.createElement('canvas');
 	cv.width = 300;
 	cv.height = 200;
-	const ct =cv.getContext('2d');
+	let ct =cv.getContext('2d');
 	for (let i = 0; i < img.length; i++){
 	ct.drawImage(img[i], 0, 0);
 	images[i] = ct.getImageData(0, 0, cv.width, cv.height);
@@ -63,7 +63,7 @@ function getMosaicImage(subImage, images, colors){
 	let near = 0;
 	cv.width = 300*45;
 	cv.height = 200*30;
-	const ct =cv.getContext('2d');
+	let ct =cv.getContext('2d');
 	for (let x = 0; x < 45; x++){
 		for (let y = 0; y < 30; y++){
 			for (let i = 0; i < colors.length; i++){
@@ -86,7 +86,7 @@ function test(img){
 	let ct = cvTest.getContext('2d');
 	cvTest.width = 100;
 	cvTest.height = 100;
-	ct.drawImage(img,0,0);
+	ct.drawImage(img,0,0,cvTest.width,cvTest.height);
 }
 
 
