@@ -76,19 +76,20 @@ function getMosaicImage(subImage, images, colors){
 }
 
 function test(img){
+	let cvTest = document.getElementById("cvTest");
+	let ct = cvTest.getContext('2d');
 	console.log(img);
     let image = new Image();
+	image.onload=()=>{
+	cvTest.width = 100;
+	cvTest.height = 100;
+	ct.drawImage(img,0,0,cvTest.width,cvTest.height);
+	}
     let reader = new FileReader();
     reader.onload = ()=> image.src = reader.result;
 
     reader.readAsDataURL(img);
     console.log(img);
-    
-	let cvTest = document.getElementById("cvTest");
-	let ct = cvTest.getContext('2d');
-	cvTest.width = 100;
-	cvTest.height = 100;
-	ct.drawImage(img,0,0,cvTest.width,cvTest.height);
 }
 
 
