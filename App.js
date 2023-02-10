@@ -1,6 +1,6 @@
 function makeMosaic(){
 	const subImage_origin = document.getElementById('subImage').files[0];
-	const testImage = document.getElementById('testImage').value;
+	const testImage = document.getElementById('testImage');
 	console.log(testImage);
 	test(testImage);
 	const subImage = resizeImage(subImage_origin);
