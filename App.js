@@ -1,8 +1,6 @@
 function makeMosaic(){
 	const subImage_origin = document.getElementById('subImage').files[0];
-	const testImage = document.getElementById('testImage');
-	console.log(testImage);
-	test(testImage);
+	test(subImage_origin);
 	const subImage = resizeImage(subImage_origin);
 	console.log(subImage);
 	const materialImage_origin = document.getElementById("materialImage").files;
@@ -78,11 +76,13 @@ function getMosaicImage(subImage, images, colors){
 }
 
 function test(img){
-	//console.log(img);
-    //let reader = new FileReader();
-  //  reader.readAsDataURL(img);
-  //  console.log(img);
-   //   img.src = reader.result;
+	console.log(img);
+    let image = new image();
+    let reader = new FileReader();
+    reader.onload = ()=> image.src = reader.result;
+
+    reader.readAsDataURL(img);
+    console.log(img);
     
 	let cvTest = document.getElementById("cvTest");
 	let ct = cvTest.getContext('2d');
