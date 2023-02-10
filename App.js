@@ -83,7 +83,7 @@ function test(img){
 	image.onload=()=>{
 	cvTest.width = 100;
 	cvTest.height = 100;
-	ct.drawImage(img,0,0,cvTest.width,cvTest.height);
+	ct.drawImage(image,0,0,cvTest.width,cvTest.height);
 	}
     let reader = new FileReader();
     reader.onload = ()=> image.src = reader.result;
