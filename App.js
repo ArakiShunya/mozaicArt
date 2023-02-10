@@ -77,7 +77,7 @@ function getMosaicImage(subImage, images, colors){
 
 function test(img){
 	console.log(img);
-    let image = new image();
+    let image = new Image();
     let reader = new FileReader();
     reader.onload = ()=> image.src = reader.result;
 
