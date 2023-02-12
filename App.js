@@ -1,7 +1,6 @@
 function makeMosaic(){
 	const subImage_origin = document.getElementById('subImage').files[0];
 	const subImage = resizeImage(subImage_origin);
-	console.log(subImage);
 	const materialImage_origin = document.getElementById("materialImage").files;
 	console.log(materialImage_origin);
 	const materialImagesColors = resizeGetColor(materialImage_origin);
@@ -17,7 +16,7 @@ function resizeImage(img){
 	const width = 45;
 	const height = 30;
 	const image = dispImage(img,width,height);
-	console.log(image.data.data);
+	console.log(image.data);
 	let color = Array(width*height);
 	for (let i = 0; i < color.length; i++){
 		color[i] = (image.data[4*i], image.data[4*i+1], image.data[4*i+2], image.data[4*i+3]);
@@ -81,7 +80,7 @@ function dispImage(img,width,height){
     reader.onload = ()=> image.src = reader.result;
 
     reader.readAsDataURL(img);
-    const imageRe = ct.getImageData(0, 0, cv.width, cv.height);
+    const imageRe = ct.getImageData(0, 0, cvTest.width, cvTest.height);
 	return imageRe;
 }
 
