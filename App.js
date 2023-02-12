@@ -14,8 +14,11 @@ const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', makeMosaic);
 
 function resizeImage(img){
-	const image = dispImage(img,45,30);
+	const width = 45;
+	const height = 30;
+	const image = dispImage(img,width,height);
 	console.log(image);
+	let color = Array(width*height);
 	for (let i = 0; i < color.length; i++){
 		color[i] = (image[4*i], image[4*i+1], image[4*i+2], image[4*i+3]);
 	}
