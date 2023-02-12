@@ -1,7 +1,6 @@
 function makeMosaic(){
 	const subImage_origin = document.getElementById('subImage').files[0];
 	const subImage = resizeImage(subImage_origin);
-	console.log(subImage);
 	const materialImage_origin = document.getElementById("materialImage").files;
 	console.log(materialImage_origin);
 	const materialImagesColors = resizeGetColor(materialImage_origin);
@@ -30,14 +29,11 @@ function resizeGetColor(img){
 	let colorsCal = Array(4);
 	colorsCal.fill(0);
 	let colors = Array(img.length);
-	let cv = document.createElement('canvas');
-	cv.width = 300;
-	cv.height = 200;
-	let ct =cv.getContext('2d');
+	const width = 300;
+	const height = 200;
 	for (let i = 0; i < img.length; i++){
-	ct.drawImage(img[i], 0, 0);
-	images[i] = ct.getImageData(0, 0, cv.width, cv.height);
-	for (let j = 0; j < cv.width * cv.height; j++){
+	images[i] = dispImage(img[i],width,height);
+	for (let j = 0; j < width * height; j++){
 		colorsCal = colorsCal + (image[i][4*j], image[i][4*j+1], image[i][4*j+2], image[i][4*j+3]);
 		/*
 		colorsCal[0] = colorsCal[0] + images[i][4*j]
