@@ -81,7 +81,7 @@ function dispImage(img,width,height){
 
     reader.readAsDataURL(img);
     const imageRe = ct.getImageData(0, 0, width, height);
-	console.log(imageRe);
+	console.log(imageRe.data);
 	return imageRe;
 	}
 }
