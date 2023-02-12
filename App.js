@@ -22,6 +22,7 @@ function resizeImage(img){
 	for (let i = 0; i < color.length; i++){
 		color[i] = (image[4*i], image[4*i+1], image[4*i+2], image[4*i+3]);
 	}
+	console.log(color);
 	return color;
 }
 
@@ -35,7 +36,7 @@ function resizeGetColor(img){
 	for (let i = 0; i < img.length; i++){
 	images[i] = dispImage(img[i],width,height);
 	for (let j = 0; j < width * height; j++){
-		colorsCal = colorsCal + (image[i][4*j], image[i][4*j+1], image[i][4*j+2], image[i][4*j+3]);
+		colorsCal = colorsCal + (images[i][4*j], images[i][4*j+1], images[i][4*j+2], images[i][4*j+3]);
 		/*
 		colorsCal[0] = colorsCal[0] + images[i][4*j]
 		colorsCal[1] = colorsCal[1] + images[i][4*j+1]
