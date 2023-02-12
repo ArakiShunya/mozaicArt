@@ -75,6 +75,7 @@ function dispImage(img,width,height){
 	cvTest.height = height;
 	let ct = cvTest.getContext('2d');
 	ct.drawImage(image,0,0,cvTest.width,cvTest.height);
+	}
 	
     let reader = new FileReader();
     reader.onload = ()=> image.src = reader.result;
@@ -83,7 +84,6 @@ function dispImage(img,width,height){
     const imageRe = ct.getImageData(0, 0, width, height);
 	console.log(imageRe.data);
 	return imageRe;
-	}
 }
 
 
