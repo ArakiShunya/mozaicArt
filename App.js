@@ -69,20 +69,21 @@ function getMosaicImage(subImage, images, colors){
 
 function dispImage(img,width,height){
 	let cvTest = document.getElementById("cvTest");
-	let ct = cvTest.getContext('2d');
     let image = new Image();
 	image.onload=()=>{
 	cvTest.width = width;
 	cvTest.height = height;
+	let ct = cvTest.getContext('2d');
 	ct.drawImage(image,0,0,cvTest.width,cvTest.height);
-	}
+	
     let reader = new FileReader();
     reader.onload = ()=> image.src = reader.result;
 
     reader.readAsDataURL(img);
-    const imageRe = ct.getImageData(0, 0, cvTest.width, cvTest.height);
+    const imageRe = ct.getImageData(0, 0, width, height);
 	console.log(imageRe);
 	return imageRe;
+	}
 }
 
 
