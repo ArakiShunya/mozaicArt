@@ -75,14 +75,15 @@ function dispImage(img,width,height){
     reader.readAsDataURL(img);
     reader.onload = () => image.src = reader.result;
 	
-    image.onload = () =>{
+    const color = image.onload = () =>{
 	cv.width = width;
 	cv.height = height;
 	ct.drawImage(image,0,0,cv.width,cv.height);
-    const imageRe = ct.getImageData(0, 0, width, height);
-    console.log("color is "+imageRe.data);
-    return imageRe;
+    const color = ct.getImageData(0, 0, width, height);
+    console.log("color is "+color.data);
+    return color;
     }
+    return color;
 }
 
 
