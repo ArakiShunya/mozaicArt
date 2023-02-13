@@ -16,7 +16,7 @@ function resizeImage(img){
 	const width = 45;
 	const height = 30;
 	const image = dispImage(img,width,height);
-	console.log(image.data);
+	console.log(image.data[0]);
 	let color = Array(width*height);
 	for (let i = 0; i < color.length; i++){
 		color[i] = (image.data[4*i], image.data[4*i+1], image.data[4*i+2], image.data[4*i+3]);
