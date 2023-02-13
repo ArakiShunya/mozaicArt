@@ -72,12 +72,15 @@ function dispImage(img,width,height){
     let ct = cv.getContext('2d');
     let image = new Image();
     let reader = new FileReader();
-    const readResult = reader.readAsDataURL(img);
-    image.src = readResult;
+    let color = Array(width*height*4);
+    reader.readAsDataURL(img);
+    reader.onload = () => image.src = reader.result;
+    image.onload = () =>{
 	cv.width = width;
 	cv.height = height;
 	ct.drawImage(image,0,0,cv.width,cv.height);
-    const color = ct.getImageData(0, 0, width, height);
+        color = ct.getImageData(0, 0, width, height);
+    }
     console.log("color is "+color.data);
     return color;
 }
