@@ -76,7 +76,7 @@ function dispImage(img,width,height){
 	ct.drawImage(image,0,0,cv.width,cv.height);
 	
     let reader = new FileReader();
-    image.src = reader.result;
+    reader.onload = () => image.src = reader.result;
 
     reader.readAsDataURL(img);
     
