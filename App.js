@@ -35,7 +35,7 @@ async function resizeGetColor(img){
 	for (let i = 0; i < img.length; i++){
 	images[i] = await dispImage(img[i],width,height);
 	for (let j = 0; j < width * height; j++){
-		colorsCal = colorsCal + (images[i].data[4*j], images[i].data[4*j+1], images[i].data[4*j+2], images[i].data[4*j+3]);
+		colorsCal = colorsCal + [images[i].data[4*j], images[i].data[4*j+1], images[i].data[4*j+2], images[i].data[4*j+3]];
 		/*
 		colorsCal[0] = colorsCal[0] + images[i][4*j]
 		colorsCal[1] = colorsCal[1] + images[i][4*j+1]
