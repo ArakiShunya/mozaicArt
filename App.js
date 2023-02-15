@@ -22,7 +22,6 @@ async function resizeImage(img){
 		color[i] = new Array(4);
 		color[i] = [image.data[4*i], image.data[4*i+1], image.data[4*i+2], image.data[4*i+3]];
 	}
-	console.table(color);
 	return color;
 }
 
