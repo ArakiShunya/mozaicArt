@@ -72,7 +72,6 @@ function dispImage(img,width,height){
     let ct = cv.getContext('2d');
     let image = new Image();
     let reader = new FileReader();
-    let color = Array(width*height*4);
     reader.readAsDataURL(img);
     reader.onload = () => image.src = reader.result;
     image.onload = () =>{
