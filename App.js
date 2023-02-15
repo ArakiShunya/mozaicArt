@@ -19,7 +19,7 @@ async function resizeImage(img){
 	console.log(image);
 	let color = Array(width*height);
 	for (let i = 0; i < color.length; i++){
-		color[i] = (image.data[4*i], image.data[4*i+1], image.data[4*i+2], image.data[4*i+3]);
+		color[i] = [image.data[4*i], image.data[4*i+1], image.data[4*i+2], image.data[4*i+3]];
 	}
 	console.log("subColor is"+color);
 	return color;
