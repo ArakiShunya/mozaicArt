@@ -67,13 +67,13 @@ function getMosaicImage(subImage, images, colors){
 	}
 }
 
-function dispImage(img,width,height){
+async function dispImage(img,width,height){
     let cv = document.getElementById("cvTest");
     let ct = cv.getContext('2d');
     let image = new Image();
     let reader = new FileReader();
     var color = Array(width*height*4);
-    const imgURL = reader.readAsDataURL(img);
+    const imgURL = await reader.readAsDataURL(img);
     console.log(imgURL);
     image.src = imgURL;
     cv.width = width;
