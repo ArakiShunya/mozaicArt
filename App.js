@@ -73,14 +73,13 @@ function dispImage(img,width,height){
     let image = new Image();
     let reader = new FileReader();
     var color = Array(width*height*4);
-    reader.readAsDataURL(img);
-    reader.onload = () => image.src = reader.result;
-    image.onload = () =>{
-	cv.width = width;
-	cv.height = height;
-	ct.drawImage(image,0,0,cv.width,cv.height);
-        color = ct.getImageData(0, 0, width, height);
-    }
+    const imgURL = reader.readAsDataURL(img);
+    console.log(imgURL);
+    image.src = imgURL;
+    cv.width = width;
+    cv.height = height;
+    ct.drawImage(image,0,0,cv.width,cv.height);
+    color = ct.getImageData(0, 0, width, height);
     console.log("color is "+color.data);
     return color;
 }
