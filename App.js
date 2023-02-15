@@ -1,10 +1,10 @@
-function makeMosaic(){
+async function makeMosaic(){
 	const subImage_origin = document.getElementById('subImage').files[0];
-	const subImage = resizeImage(subImage_origin);
+	const subImage = await resizeImage(subImage_origin);
 	const materialImage_origin = document.getElementById("materialImage").files;
-	console.log(materialImage_origin);
-	const materialImagesColors = resizeGetColor(materialImage_origin);
-	console.log(materialImagesColors);
+	console.log("materialImage_origin:"+materialImage_origin);
+	const materialImagesColors = await resizeGetColor(materialImage_origin);
+	console.log("materialImageColors:"+materialImagesColors);
 	const materialImages = materialImagesColors[0];
 	const imageColors = materialImagesColors[1];
 	const completeImage = getMosaicImage(subImage,materialImages,imageColors);
