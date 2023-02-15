@@ -81,6 +81,7 @@ function getMosaicImage(subImage, images, colors){
 				d[i] = dotProduct(dColor,dColor);
 			}
 			min = Math.min(...d);
+			console.log("min : " + min);
 			near = d.indexOf(min);
 			ct.drawImage(images[near], x * 300, y * 200);
 		}
