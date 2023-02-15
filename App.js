@@ -28,7 +28,6 @@ async function resizeImage(img){
 async function resizeGetColor(img){
 	let images = Array(img.length);
 	let colorsCal = Array(4);
-	colorsCal.fill(0);
 	console.log("colorsCal0 :"+colorsCal)
 	let colors = Array(img.length);
 	colors.fill(0);
@@ -36,6 +35,7 @@ async function resizeGetColor(img){
 	const height = 200;
 	for (let i = 0; i < img.length; i++){
 	images[i] = await dispImage(img[i],width,height);
+	colorsCal.fill(0);
 	for (let j = 0; j < width * height; j++){
 		colorsCal = colorsCal + [images[i].data[4*j], images[i].data[4*j+1], images[i].data[4*j+2], images[i].data[4*j+3]];
 		/*
