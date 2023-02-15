@@ -44,16 +44,21 @@ async function resizeGetColor(img){
 
 async function getColor(image,width,height){
 	let colorsCal = Array(4);
+	colorsCal.fill(0)
 	for (let j = 0; j < width * height; j++){
-		colorsCal = colorsCal + [image[4*j], image[4*j+1], image[4*j+2], image[4*j+3]];
-		/*
-		colorsCal[0] = colorsCal[0] + images[i][4*j]
-		colorsCal[1] = colorsCal[1] + images[i][4*j+1]
-		colorsCal[2] = colorsCal[2] + images[i][4*j+2]
-		colorsCal[3] = colorsCal[3] + images[i][4*j+3];
-		*/
+		//colorsCal = colorsCal + [image[4*j], image[4*j+1], image[4*j+2], image[4*j+3]];
+		
+		colorsCal[0] = colorsCal[0] + image[4*j]
+		colorsCal[1] = colorsCal[1] + image[4*j+1]
+		colorsCal[2] = colorsCal[2] + image[4*j+2]
+		colorsCal[3] = colorsCal[3] + image[4*j+3];
+		
 	}
-	const color = colorsCal/(width*height);
+	let color =Array(4)
+	color[0] = colorsCal[0]/(width*height);
+	color[1] = colorsCal[1]/(width*height);
+	color[2] = colorsCal[2]/(width*height);
+	color[3] = colorsCal[3]/(width*height);
 	return color
 }
 
