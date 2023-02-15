@@ -43,8 +43,10 @@ async function resizeGetColor(img){
 		colorsCal[3] = colorsCal[3] + images[i][4*j+3];
 		*/
 	}
+		console.log("colorsCal is :" + colorsCal);
 	colors[i] = colorsCal / (width*height);
 	}
+	console.log("colors is :" + colors);
 	return (images, colors);
 }
 
