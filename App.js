@@ -1,13 +1,13 @@
-async function makeMosaic(){
+function makeMosaic(){
 	const subImage_origin = document.getElementById('subImage').files[0];
-	const subImage = await resizeImage(subImage_origin);
+	const subImage = resizeImage(subImage_origin);
 	const materialImage_origin = document.getElementById("materialImage").files;
 	console.log(materialImage_origin);
-	const materialImagesColors = await resizeGetColor(materialImage_origin);
+	const materialImagesColors = resizeGetColor(materialImage_origin);
 	console.log(materialImagesColors);
 	const materialImages = materialImagesColors[0];
 	const imageColors = materialImagesColors[1];
-	const completeImage = await getMosaicImage(subImage,materialImages,imageColors);
+	const completeImage = getMosaicImage(subImage,materialImages,imageColors);
 }
 const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', makeMosaic);
@@ -71,18 +71,20 @@ async function dispImage(img,width,height){
     let cv = document.getElementById("cvTest");
     let ct = cv.getContext('2d');
     let image = new Image();
-    let reader = new FileReader();
-    var color = Array(width*height*4);
-    const imgURL = await reader.readAsDataURL(img);
-    console.log(imgURL);
-    image.src = imgURL;
+    image.src = await convert2DataUrl(img);
     cv.width = width;
     cv.height = height;
     ct.drawImage(image,0,0,cv.width,cv.height);
-    color = ct.getImageData(0, 0, width, height);
+    let color = ct.getImageData(0, 0, width, height);
     console.log("color is "+color.data);
     return color;
 }
 
+async function convert2DataUrl(img) {
+    let reader = new FileReader()
+    reader.readAsDataURL(img)
+    await new Promise(resolve => reader.onload = () => resolve())
+    return reader.result
+}
 
 
