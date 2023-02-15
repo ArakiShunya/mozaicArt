@@ -47,7 +47,7 @@ async function resizeGetColor(img){
 	colors[i] = colorsCal / (width*height);
 	}
 	console.log("colors is :" + colors);
-	return (images, colors);
+	return [images, colors];
 }
 
 function getMosaicImage(subImage, images, colors){
