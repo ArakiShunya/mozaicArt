@@ -78,7 +78,7 @@ function dispImage(img,width,height){
 	cv.width = width;
 	cv.height = height;
 	ct.drawImage(image,0,0,cv.width,cv.height);
-        color = ct.getImageData(0, 0, width, height);
+        var color = ct.getImageData(0, 0, width, height);
     }
     console.log("color is "+color.data);
     return color;
