@@ -1,21 +1,21 @@
-function makeMosaic(){
+async function makeMosaic(){
 	const subImage_origin = document.getElementById('subImage').files[0];
-	const subImage = resizeImage(subImage_origin);
+	const subImage = await resizeImage(subImage_origin);
 	const materialImage_origin = document.getElementById("materialImage").files;
 	console.log(materialImage_origin);
-	const materialImagesColors = resizeGetColor(materialImage_origin);
+	const materialImagesColors = await resizeGetColor(materialImage_origin);
 	console.log(materialImagesColors);
 	const materialImages = materialImagesColors[0];
 	const imageColors = materialImagesColors[1];
-	const completeImage = getMosaicImage(subImage,materialImages,imageColors);
+	const completeImage = await getMosaicImage(subImage,materialImages,imageColors);
 }
 const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', makeMosaic);
 
-function resizeImage(img){
+async function resizeImage(img){
 	const width = 45;
 	const height = 30;
-	const image = dispImage(img,width,height);
+	const image = await dispImage(img,width,height);
 	console.log(image);
 	let color = Array(width*height);
 	for (let i = 0; i < color.length; i++){
@@ -24,7 +24,7 @@ function resizeImage(img){
 	return color;
 }
 
-function resizeGetColor(img){
+async function resizeGetColor(img){
 	let images = Array(img.length);
 	let colorsCal = Array(4);
 	colorsCal.fill(0);
@@ -32,7 +32,7 @@ function resizeGetColor(img){
 	const width = 300;
 	const height = 200;
 	for (let i = 0; i < img.length; i++){
-	images[i] = dispImage(img[i],width,height);
+	images[i] = await dispImage(img[i],width,height);
 	for (let j = 0; j < width * height; j++){
 		colorsCal = colorsCal + (images[i].data[4*j], images[i].data[4*j+1], images[i].data[4*j+2], images[i].data[4*j+3]);
 		/*
