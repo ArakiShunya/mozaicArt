@@ -28,7 +28,6 @@ async function resizeImage(img){
 
 async function resizeGetColor(img){
 	let images = Array(img.length);
-	let colorsCal = Array(4);
 	console.log("colorsCal0 :"+colorsCal)
 	let colors = Array(img.length);
 	colors.fill(0);
@@ -36,9 +35,17 @@ async function resizeGetColor(img){
 	const height = 200;
 	for (let i = 0; i < img.length; i++){
 	images[i] = await dispImage(img[i],width,height);
-	colorsCal.fill(0);
+	colors[i] = new Array(4);
+	colors[i] = await getColor(images[i].data,width,height);
+	}
+	console.log("colors is :" + colors);
+	return [images, colors];
+}
+
+async function getColor(image,width,height){
+	let colorsCal = Array(4);
 	for (let j = 0; j < width * height; j++){
-		colorsCal = colorsCal + [images[i].data[4*j], images[i].data[4*j+1], images[i].data[4*j+2], images[i].data[4*j+3]];
+		colorsCal = colorsCal + [image[4*j], image[4*j+1], image[4*j+2], image[4*j+3]];
 		/*
 		colorsCal[0] = colorsCal[0] + images[i][4*j]
 		colorsCal[1] = colorsCal[1] + images[i][4*j+1]
@@ -46,12 +53,8 @@ async function resizeGetColor(img){
 		colorsCal[3] = colorsCal[3] + images[i][4*j+3];
 		*/
 	}
-	console.log("colorsCal is :" + colorsCal);
-	colors[i] = new Array(4);
-	colors[i] = colorsCal / (width*height);
-	}
-	console.log("colors is :" + colors);
-	return [images, colors];
+	const color = colorsCal/(width*height);
+	return color
 }
 
 function getMosaicImage(subImage, images, colors){
