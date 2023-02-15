@@ -29,7 +29,9 @@ async function resizeGetColor(img){
 	let images = Array(img.length);
 	let colorsCal = Array(4);
 	colorsCal.fill(0);
+	console.log("colorsCal0 :"+colorsCal)
 	let colors = Array(img.length);
+	colors.fill(0);
 	const width = 300;
 	const height = 200;
 	for (let i = 0; i < img.length; i++){
