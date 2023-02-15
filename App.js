@@ -67,13 +67,18 @@ function getMosaicImage(subImage, images, colors){
 	let min = 0;
 	let d = Array(colors.length);
 	let near = 0;
+	let dColor = Array(4);
 	cv.width = 300*45;
 	cv.height = 200*30;
 	let ct =cv.getContext('2d');
 	for (let x = 0; x < 45; x++){
 		for (let y = 0; y < 30; y++){
 			for (let i = 0; i < colors.length; i++){
-				d = dotProduct((colors[i] - subImage[i]),(colors[i] - subImage[i]));
+				dColor[0] = colors[i][0] - subImage[i][0];
+				dColor[1] = colors[i][1] - subImage[i][1];
+				dColor[2] = colors[i][2] - subImage[i][2];
+				dColor[3] = colors[i][3] - subImage[i][3];
+				d = dotProduct(dColor,dColor);
 			}
 			min = Math.min(...d);
 			near = d.indexOf(min);
