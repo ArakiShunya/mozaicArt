@@ -19,6 +19,7 @@ async function resizeImage(img){
 	console.log(image);
 	let color = Array(width*height);
 	for (let i = 0; i < color.length; i++){
+		color[i] = new Array(4);
 		color[i] = [image.data[4*i], image.data[4*i+1], image.data[4*i+2], image.data[4*i+3]];
 	}
 	console.log("subColor is"+color);
@@ -45,7 +46,8 @@ async function resizeGetColor(img){
 		colorsCal[3] = colorsCal[3] + images[i][4*j+3];
 		*/
 	}
-		console.log("colorsCal is :" + colorsCal);
+	console.log("colorsCal is :" + colorsCal);
+	colors[i] = new Array(4);
 	colors[i] = colorsCal / (width*height);
 	}
 	console.log("colors is :" + colors);
