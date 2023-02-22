@@ -78,11 +78,11 @@ function getMosaicImage(subImage, images, colors){
 				dColor[3] = colors[i][3] - subImage[j][3];
 				d[i] = dotProduct(dColor,dColor);
 			}
-			console.log(d)
+			console.log(d);
 			min = Math.min(...d);
 			console.log("min : " + min);
 			near = d.indexOf(min);
-			ct.drawImage(images[near], x * 300, y * 200, (x + 1) * 300, (y + 1) * 200;
+			ct.drawImage(images[near], x * 300, y * 200, (x + 1) * 300, (y + 1) * 200);
 		}
 	}
 }
