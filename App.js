@@ -65,6 +65,7 @@ function getMosaicImage(subImage, images, colors){
 	cv.width = 300*45;
 	cv.height = 200*30;
 	let ct =cv.getContext('2d');
+        ct.drawImage(images[0], 0, 0);
 	for (let x = 0; x < 45; x++){
 		for (let y = 0; y < 30; y++){
 			for (let i = 0; i < colors.length; i++){
