@@ -5,7 +5,8 @@ async function makeMosaic(){
 	const materialImagesColors = await resizeGetColor(materialImage_origin);
 	const materialImages = materialImagesColors[0];
 	const imageColors = materialImagesColors[1];
-	const completeImage = await getMosaicImage(subImage,materialImages,imageColors);
+	console.log(imageColors);
+	await getMosaicImage(subImage,materialImages,imageColors);
 }
 const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', makeMosaic);
