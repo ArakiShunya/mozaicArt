@@ -57,6 +57,7 @@ async function getColor(image,width,height){
 }
 
 function getMosaicImage(subImage, images, colors){
+	console.log("getMosaicImage");
 	let cv = document.getElementById('cv');
 	let min = 0;
 	let d = Array(colors.length);
@@ -94,7 +95,6 @@ async function dispImage(img,width,height){
     cv.height = height;
     ct.drawImage(image,0,0,cv.width,cv.height);
     let color = ct.getImageData(0, 0, width, height);
-    console.log("color is "+color.data);
     return color;
 }
 
