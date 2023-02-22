@@ -2,11 +2,11 @@
   font-size:24px;
   background-image: linear-gradient(90deg, #74E1F5 0 25%, #F5D574 25% 50%, #74F590 50% 75%, #F57474 75% 100%);
   background-repeat:no-repeat;
-  background-size:100% 0.3rem;
+  background-size:20% 0.3rem;
   background-position: bottom;
   color#353535;
   font-weight:bold;
-  text-align: center;
+  text-align: left;
 }
 
 .box{
