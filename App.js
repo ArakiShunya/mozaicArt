@@ -5,7 +5,6 @@ async function makeMosaic(){
 	const materialImagesColors = await resizeGetColor(materialImage_origin);
 	const materialImages = materialImagesColors[0];
 	const imageColors = materialImagesColors[1];
-	console.log(imageColors);
 	await getMosaicImage(subImage,materialImages,imageColors);
 }
 const submitButton = document.getElementById("submitButton");
@@ -58,7 +57,6 @@ async function getColor(image,width,height){
 }
 
 function getMosaicImage(subImage, images, colors){
-	console.log("getMosaicImage");
 	let cv = document.getElementById('cv');
 	let min = 0;
 	let d = Array(colors.length);
@@ -68,7 +66,9 @@ function getMosaicImage(subImage, images, colors){
 	cv.height = 200*30;
 	let ct =cv.getContext('2d');
         ct.drawImage(images[0], 0, 0);
+	console.log("getMosaicImage");
 	for (let x = 0; x < 45; x++){
+		console.log("x:" + x);
 		for (let y = 0; y < 30; y++){
 			for (let i = 0; i < colors.length; i++){
 				let j = y + x*y
