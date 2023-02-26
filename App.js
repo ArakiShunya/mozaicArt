@@ -62,10 +62,10 @@ function getMosaicImage(subImage, images, colors){
 	let d = Array(colors.length);
 	let near = 0;
 	let dColor = Array(4);
+	let imgs = Array(images.length);
 	cv.width = 300*45;
 	cv.height = 200*30;
 	let ct =cv.getContext('2d');
-        ct.drawImage(images[0], 0, 0, 300, 300);
 	console.log("getMosaicImage");
 	for (let x = 0; x < 45; x++){
 		console.log("x:" + x);
@@ -77,12 +77,13 @@ function getMosaicImage(subImage, images, colors){
 				dColor[2] = colors[i][2] - subImage[j][2];
 				dColor[3] = colors[i][3] - subImage[j][3];
 				d[i] = dotProduct(dColor,dColor);
+				imgs[i] = await convert2DataUrl(images[i]);
 			}
 			console.log(d);
 			min = Math.min(...d);
 			console.log("min : " + min);
 			near = d.indexOf(min);
-			ct.drawImage(images[near], x * 300, y * 200, (x + 1) * 300, (y + 1) * 200);
+			ct.drawImage(imgs[near], x * 300, y * 200, (x + 1) * 300, (y + 1) * 200);
 		}
 	}
 }
