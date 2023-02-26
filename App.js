@@ -56,7 +56,7 @@ async function getColor(image,width,height){
 	return color
 }
 
-function getMosaicImage(subImage, images, colors){
+async function getMosaicImage(subImage, images, colors){
 	let cv = document.getElementById('cvTest');
 	let min = 0;
 	let d = Array(colors.length);
