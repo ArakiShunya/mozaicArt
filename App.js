@@ -78,6 +78,7 @@ async function getMosaicImage(subImage, images, colors){
 				dColor[3] = colors[i][3] - subImage[j][3];
 				d[i] = dotProduct(dColor,dColor);
 				imgs[i] = await convert2DataUrl(images[i]);
+				console.log(imgs);mk
 			}
 			console.log(d);
 			min = Math.min(...d);
