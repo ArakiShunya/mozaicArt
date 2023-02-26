@@ -76,7 +76,7 @@ async function getMosaicImage(subImage, images, colors){
 				dColor[1] = colors[i][1] - subImage[j][1];
 				dColor[2] = colors[i][2] - subImage[j][2];
 				dColor[3] = colors[i][3] - subImage[j][3];
-				d[i] = dot(dColor);
+				d[i] = await dot(dColor);
 				imgs[i] = await convert2DataUrl(images[i]);
 				console.log(imgs);
 			}
@@ -108,7 +108,7 @@ async function convert2DataUrl(img) {
     return reader.result;
 }
 
-function dot(color){
+async function dot(color){
 	const colorX = color[0] * color[0];
 	const colorY = color[1] * color[1];
 	const colorZ = color[2] * color[2];
