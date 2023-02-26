@@ -65,7 +65,7 @@ async function getMosaicImage(subImage, images, colors){
 	cv.width = 300*45;
 	cv.height = 200*30;
 	let ct =cv.getContext('2d');
-	console.log("getMosaicImage");
+	console.log("colors : " + colors);
 	for (let x = 0; x < 45; x++){
 		console.log("x:" + x);
 		for (let y = 0; y < 30; y++){
