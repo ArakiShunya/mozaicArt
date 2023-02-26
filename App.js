@@ -57,19 +57,19 @@ async function getColor(image,width,height){
 }
 
 async function getMosaicImage(subImage, images, colors){
-	let cv = document.getElementById('cvTest');
+	let cv = document.getElementById('cv');
 	let min = 0;
 	let d = Array(colors.length);
 	let near = 0;
 	let dColor = Array(4);
-	cv.width = 300*45;
-	cv.height = 200*30;
+	cv.width = 300 * 45;
+	cv.height = 200 * 30;
 	let ct =cv.getContext('2d');
 	console.log("colors : " + colors);
 	for (let x = 0; x < 45; x++){
 		console.log("x:" + x);
 		for (let y = 0; y < 30; y++){
-			for (let i = 0; i < colors.length; i++){
+			for (let i = 0; i < d.length; i++){
 				let j = y + x * y
 				dColor[0] = colors[i][0] - subImage[j][0];
 				dColor[1] = colors[i][1] - subImage[j][1];
