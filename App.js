@@ -11,8 +11,8 @@ const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', makeMosaic);
 
 async function resizeImage(img){
-	const width = 45;
-	const height = 30;
+	const width = 4;
+	const height = 4;
 	const image = await dispImage(img,width,height);
 	let color = Array(width*height);
 	for (let i = 0; i < color.length; i++){
@@ -61,12 +61,12 @@ async function getMosaicImage(subImage, images, colors){
 	let min = 0;
 	let near = 0;
 	let dColor = Array(4);
-	cv.width = 300 * 45;
-	cv.height = 200 * 30;
+	cv.width = 300 * 4;
+	cv.height = 200 * 4;
 	let ct =cv.getContext('2d');
-	for (let x = 0; x < 45; x++){
+	for (let x = 0; x < 4; x++){
 		console.log("x:" + x);
-		for (let y = 0; y < 30; y++){
+		for (let y = 0; y < 4; y++){
 			for (let i = 0; i < colors.length; i++){
 				let j = y + x * y
 				let d = Array(colors.length);
