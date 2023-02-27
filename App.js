@@ -74,15 +74,13 @@ async function getMosaicImage(subImage, images, colors){
 				dColor[0] = colors[i][0] - subImage[j][0];
 				dColor[1] = colors[i][1] - subImage[j][1];
 				dColor[2] = colors[i][2] - subImage[j][2];
-				dColor[3] = colors[i][3] - subImage[j][3];
 				d[i] = await dot(dColor);
 			}
 			console.log(d);
 			min = Math.min(...d);
 			console.log("min : " + min);
 			near = d.indexOf(min);
-			console.log(images[near].data);
-                        ct.putImageData(images[near], x * 300, y * 200);
+                        ct.putImageData(images[near].data, x * 300, y * 200);
 		}
 	}
 }
@@ -107,9 +105,9 @@ async function convert2DataUrl(img) {
 }
 
 async function dot(color){
-	const colorX = color[0] * color[0];
-	const colorY = color[1] * color[1];
-	const colorZ = color[2] * color[2];
-	const dotColor = colorX + colorY + colorZ;
+	let colorR = color[0] * color[0];
+	let colorG = color[1] * color[1];
+	let colorB = color[2] * color[2];
+	let dotColor = colorR + colorG + colorB;
 	return dotColor;
 }
