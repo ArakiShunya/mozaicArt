@@ -67,9 +67,9 @@ async function getMosaicImage(subImage, images, colors){
 	for (let x = 0; x < 4; x++){
 		console.log("x:" + x);
 		for (let y = 0; y < 4; y++){
+			let d = Array(colors.length);
 			for (let i = 0; i < colors.length; i++){
 				let j = y + x * y
-				let d = Array(colors.length);
 				dColor[0] = colors[i][0] - subImage[j][0];
 				dColor[1] = colors[i][1] - subImage[j][1];
 				dColor[2] = colors[i][2] - subImage[j][2];
@@ -79,6 +79,7 @@ async function getMosaicImage(subImage, images, colors){
 			min = Math.min(...d);
 			console.log("min : " + min);
 			near = d.indexOf(min);
+			
                         await ct.putImageData(images[near], x * 300, y * 200);
 		}
 	}
