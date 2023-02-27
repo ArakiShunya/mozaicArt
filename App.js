@@ -80,7 +80,7 @@ async function getMosaicImage(subImage, images, colors){
 			min = Math.min(...d);
 			console.log("min : " + min);
 			near = d.indexOf(min);
-                        ct.putImageData(images[near], x * 300, y * 200);
+                        await ct.putImageData(images[near], x * 300, y * 200);
 		}
 	}
 }
