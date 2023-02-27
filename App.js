@@ -26,8 +26,8 @@ async function resizeGetColor(img){
 	let images = Array(img.length);
 	let colors = Array(img.length);
 	colors.fill(0);
-	const width = 300;
-	const height = 200;
+	const width = 30;
+	const height = 20;
 	for (let i = 0; i < img.length; i++){
 	images[i] = await dispImage(img[i],width,height);
 	colors[i] = new Array(4);
@@ -61,8 +61,8 @@ async function getMosaicImage(subImage, images, colors){
 	let min = 0;
 	let near = 0;
 	let dColor = Array(4);
-	cv.width = 300 * 20;
-	cv.height = 200 * 15;
+	cv.width = 30 * 20;
+	cv.height = 20 * 15;
 	let ct =cv.getContext('2d');
 	for (let x = 0; x < 20; x++){
 		console.log("x:" + x);
@@ -80,7 +80,7 @@ async function getMosaicImage(subImage, images, colors){
 			near = d.indexOf(min);
 			console.log(subImage[j])
 			console.log(images[near].data);		
-                        await ct.putImageData(images[near], x * 300, y * 200);
+                        await ct.putImageData(images[near], x * 30, y * 20);
 		}
 	}
 	const completeImage = ct.getImageData(0,0,cv.width,cv.height)
