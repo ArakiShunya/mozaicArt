@@ -79,6 +79,7 @@ async function getMosaicImage(subImage, images, colors){
 			min = Math.min(...d);
 			near = d.indexOf(min);
                         await ct.putImageData(images[near], x * 30, y * 20);
+		        sleep(100);	
 		}
 	}
 	const png = cv.toDataURL();
@@ -110,4 +111,12 @@ async function dot(color){
 	let colorB = color[2] * color[2];
 	let dotColor = colorR + colorG + colorB;
 	return dotColor;
+}
+
+// ビジーwaitを使う方法
+function sleep(waitMsec) {
+  var startMsec = new Date();
+ 
+  // 指定ミリ秒間だけループさせる（CPUは常にビジー状態）
+  while (new Date() - startMsec < waitMsec);
 }
