@@ -13,7 +13,11 @@ submitButton.addEventListener('click', makeMosaic);
 async function resizeImage(img){
 	const width = 200;
 	const height = 150;
-	const image = await dispImage(img,width,height);
+	let cv = document.getElementById("cvTest");
+	let ct = cv.getContext('2d');
+	cv.width = width;
+        cv.height = height;
+	const image = await dispImage(img,cv,ct);
 	let color = Array(width*height);
 	for (let i = 0; i < color.length; i++){
 		color[i] = new Array(4);
@@ -28,8 +32,12 @@ async function resizeGetColor(img){
 	colors.fill(0);
 	const width = 30;
 	const height = 20;
+	let cv = document.getElementById("cvTest");
+	let ct = cv.getContext('2d');
+	cv.width = width;
+        cv.height = height;
 	for (let i = 0; i < img.length; i++){
-	images[i] = await dispImage(img[i],width,height);
+	images[i] = await dispImage(img[i],cv,ct);
 	colors[i] = new Array(4);
 	colors[i] = await getColor(images[i].data,width,height);
 	}
@@ -49,10 +57,11 @@ async function getColor(image,width,height){
 		
 	}
 	let color =Array(4)
-	color[0] = colorsCal[0]/(width*height);
-	color[1] = colorsCal[1]/(width*height);
-	color[2] = colorsCal[2]/(width*height);
-	color[3] = colorsCal[3]/(width*height);
+	let sumPixel = width * height;
+	color[0] = colorsCal[0]/sumPixel;
+	color[1] = colorsCal[1]/sumPixel;
+	color[2] = colorsCal[2]/sumPixel;
+	color[3] = colorsCal[3]/sumPixel;
 	return color;
 }
 
@@ -86,15 +95,11 @@ async function getMosaicImage(subImage, images, colors){
 	document.getElementById("png").src = png;
 }
 
-async function dispImage(img,width,height){
-    let cv = document.getElementById("cvTest");
-    let ct = cv.getContext('2d');
+async function dispImage(img,cv,ct){
     let image = new Image();
     image.src = await convert2DataUrl(img);
-    cv.width = width;
-    cv.height = height;
     ct.drawImage(image,0,0,cv.width,cv.height);
-    let color = ct.getImageData(0, 0, width, height);
+    let color = ct.getImageData(0, 0, cv.width, cv.height);
     return color;
 }
 
@@ -111,12 +116,4 @@ async function dot(color){
 	let colorB = color[2] * color[2];
 	let dotColor = colorR + colorG + colorB;
 	return dotColor;
-}
-
-// ビジーwaitを使う方法
-function sleep(waitMsec) {
-  var startMsec = new Date();
- 
-  // 指定ミリ秒間だけループさせる（CPUは常にビジー状態）
-  while (new Date() - startMsec < waitMsec);
 }
