@@ -88,7 +88,6 @@ async function getMosaicImage(subImage, images, colors){
 			min = Math.min(...d);
 			near = d.indexOf(min);
                         await ct.putImageData(images[near], x * 30, y * 20);
-		        sleep(100);	
 		}
 	}
 	const png = cv.toDataURL();
