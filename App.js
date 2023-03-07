@@ -70,12 +70,12 @@ async function getMosaicImage(subImage, images, colors){
 	let min = 0;
 	let near = 0;
 	let dColor = Array(4);
-	cv.width = 30 * 200;
-	cv.height = 20 * 150;
+	cv.width = 15 * 100;
+	cv.height = 10 *70;
 	let ct =cv.getContext('2d');
-	for (let x = 0; x < 200; x++){
+	for (let x = 0; x < 100; x++){
 		console.log("x:" + x);
-		for (let y = 0; y < 150; y++){
+		for (let y = 0; y < 70; y++){
 			let d = Array(colors.length);
 			let j = y + x * 150
 			for (let i = 0; i < colors.length; i++){
@@ -87,7 +87,7 @@ async function getMosaicImage(subImage, images, colors){
 			console.log(d);
 			min = Math.min(...d);
 			near = d.indexOf(min);
-                        await ct.putImageData(images[near], x * 30, y * 20);
+                        await ct.putImageData(images[near], x * 15, y * 10);
 		}
 	}
 	const png = cv.toDataURL();
