@@ -11,8 +11,8 @@ const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', makeMosaic);
 
 async function resizeImage(img){
-	const width = 200;
-	const height = 150;
+	const width = 100;
+	const height = 70;
 	let cv = document.getElementById("cvTest");
 	let ct = cv.getContext('2d');
 	cv.width = width;
@@ -30,8 +30,8 @@ async function resizeGetColor(img){
 	let images = Array(img.length);
 	let colors = Array(img.length);
 	colors.fill(0);
-	const width = 30;
-	const height = 20;
+	const width = 15;
+	const height = 10;
 	let cv = document.getElementById("cvTest");
 	let ct = cv.getContext('2d');
 	cv.width = width;
