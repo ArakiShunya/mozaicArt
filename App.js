@@ -22,8 +22,8 @@ async function resizeImage(img,width,height){
 	const image = await dispImage(img,cv,ct);
 	let color = Array(width*height);
 	for (let i = 0; i < color.length; i++){
-		color[i] = new Array(4);
-		color[i] = [image.data[4*i], image.data[4*i+1], image.data[4*i+2], image.data[4*i+3]];
+		color[i] = new Array(3);
+		color[i] = [image.data[4*i], image.data[4*i+1], image.data[4*i+2]];
 	}
 	return color;
 }
@@ -50,8 +50,7 @@ async function getColor(image,width,height){
 	for (let j = 0; j < width * height; j++){
 		colorsCal[0] = colorsCal[0] + image[4*j];
 		colorsCal[1] = colorsCal[1] + image[4*j+1];
-		colorsCal[2] = colorsCal[2] + image[4*j+2];
-		
+		colorsCal[2] = colorsCal[2] + image[4*j+2];	
 	}
 	let color =Array(3)
 	let sumPixel = width * height;
