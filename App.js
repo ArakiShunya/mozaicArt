@@ -6,7 +6,7 @@ async function makeMosaic(){
 	const subImage_origin = document.getElementById('subImage').files[0];
 	const subImage = await resizeImage(subImage_origin,subWidth,subHeight);
 	const materialImage_origin = document.getElementById("materialImage").files;
-	const materialImagesColors = await resizeGetColor(materialImage_origin);
+	const materialImagesColors = await resizeGetColor(materialImage_origin,mateWidth,mateHeight);
 	const materialImages = materialImagesColors[0];
 	const imageColors = materialImagesColors[1];
 	await getMosaicImage(subImage,materialImages,imageColors,subWidth,subHeight,mateWidth,mateHeight);
