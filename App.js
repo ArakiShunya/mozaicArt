@@ -38,30 +38,26 @@ async function resizeGetColor(img,width,height){
         cv.height = height;
 	for (let i = 0; i < img.length; i++){
 	images[i] = await dispImage(img[i],cv,ct);
-	colors[i] = new Array(4);
+	colors[i] = new Array(3);
 	colors[i] = await getColor(images[i].data,width,height);
 	}
 	return [images, colors];
 }
 
 async function getColor(image,width,height){
-	let colorsCal = Array(4);
+	let colorsCal = Array(3);
 	colorsCal.fill(0)
 	for (let j = 0; j < width * height; j++){
-		//colorsCal = colorsCal + [image[4*j], image[4*j+1], image[4*j+2], image[4*j+3]];
-		
-		colorsCal[0] = colorsCal[0] + image[4*j]
-		colorsCal[1] = colorsCal[1] + image[4*j+1]
-		colorsCal[2] = colorsCal[2] + image[4*j+2]
-		colorsCal[3] = colorsCal[3] + image[4*j+3];
+		colorsCal[0] = colorsCal[0] + image[4*j];
+		colorsCal[1] = colorsCal[1] + image[4*j+1];
+		colorsCal[2] = colorsCal[2] + image[4*j+2];
 		
 	}
-	let color =Array(4)
+	let color =Array(3)
 	let sumPixel = width * height;
 	color[0] = colorsCal[0]/sumPixel;
 	color[1] = colorsCal[1]/sumPixel;
 	color[2] = colorsCal[2]/sumPixel;
-	color[3] = colorsCal[3]/sumPixel;
 	return color;
 }
 
@@ -69,7 +65,7 @@ async function getMosaicImage(subImage, images, colors, subWidth, subHeight, mat
 	let cv = document.getElementById('cv');
 	let min = 0;
 	let near = 0;
-	let dColor = Array(4);
+	let dColor = Array(3);
 	cv.width = subWidth * mateWidth;
 	cv.height = subHeight * mateHeight;
 	let ct =cv.getContext('2d');
