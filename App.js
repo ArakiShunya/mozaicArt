@@ -62,7 +62,7 @@ async function getColor(image,width,height){
 
 async function getMosaicImage(subImage, images, colors, subWidth, subHeight, mateWidth, mateHeight){
 	let cv = document.getElementById('cv');
-	let min = 0;
+	let minD = 0;
 	let near = 0;
 	let dColor = Array(3);
 	cv.width = subWidth * mateWidth;
@@ -78,8 +78,8 @@ async function getMosaicImage(subImage, images, colors, subWidth, subHeight, mat
 				dColor[2] = colors[i][2] - subImage[j][2];
 				d[i] = await dot(dColor);
 			}
-			min = Math.min(...d);
-			near = d.indexOf(min);
+			minD = Math.min(...d);
+			near = d.indexOf(minD);
                         await ct.putImageData(images[near], x * mateWidth, y * mateHeight);
 			colors[near] = [1000,1000,1000];
 			console.log(colors);
