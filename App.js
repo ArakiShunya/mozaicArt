@@ -71,7 +71,7 @@ async function getMosaicImage(subImage, images, colors, subWidth, subHeight, mat
 	for (let x = 0; x < subWidth; x++){
 		for (let y = 0; y < subHeight; y++){
 			let d = Array(colors.length);
-			let j = y + x * mateHeight
+			let j = y + x * subHeight
 			for (let i = 0; i < colors.length; i++){
 				dColor[0] = colors[i][0] - subImage[j][0];
 				dColor[1] = colors[i][1] - subImage[j][1];
