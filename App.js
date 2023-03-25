@@ -32,13 +32,13 @@ async function resizeGetColor(img,width,height){
 	let images = Array(img.length);
 	let colors = Array(img.length);
 	colors.fill(0);
-	let cv = document.getElementById("cvHidden");
+	let cv = document.getElementById("cvTest");
 	let ct = cv.getContext('2d');
 	cv.width = width;
         cv.height = height;
 	for (let i = 0; i < img.length; i++){
 	images[i] = await dispImage(img[i],cv,ct);
-	colors[i] = new Array(3);
+	//colors[i] = new Array(3);
 	colors[i] = await getColor(images[i].data,width,height);
 	}
 	return [images, colors];
