@@ -4,9 +4,9 @@ function makeMosaic(){
 	const mateWidth = 10;
 	const mateHeight = 8;
 	const subImage_origin = document.getElementById('subImage').files[0];
-	const subImage = resizeImage(subImage_origin,subWidth,subHeight);
+	const subImage = await resizeImage(subImage_origin,subWidth,subHeight);
 	const materialImage = document.getElementById("materialImage").files;
-	const materialImagesColors = resizeGetColor(materialImage,mateWidth,mateHeight);
+	const materialImagesColors = await resizeGetColor(materialImage,mateWidth,mateHeight);
 	let materialImages = materialImagesColors[0];
 	let imageColors = materialImagesColors[1];
 	getMosaicImage(subImage,materialImages,imageColors,subWidth,subHeight,mateWidth,mateHeight);
@@ -14,12 +14,12 @@ function makeMosaic(){
 const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', makeMosaic);
 
-function resizeImage(img,width,height){
+async function resizeImage(img,width,height){
 	let cv = document.getElementById("cvTest");
 	let ct = cv.getContext('2d');
 	cv.width = width;
         cv.height = height;
-	const image = dispImage(img,cv,ct);
+	const image = await dispImage(img,cv,ct);
 	let color = Array(width*height);
 	for (let i = 0; i < color.length; i++){
 		color[i] = new Array(3);
@@ -28,7 +28,7 @@ function resizeImage(img,width,height){
 	return color;
 }
 
-function resizeGetColor(img,width,height){
+async function resizeGetColor(img,width,height){
 	let images = Array(img.length);
 	let colors = Array(img.length);
 	colors.fill(0);
@@ -37,7 +37,7 @@ function resizeGetColor(img,width,height){
 	cv.width = width;
         cv.height = height;
 	for (let i = 0; i < img.length; i++){
-	images[i] = dispImage(img[i],cv,ct);
+	images[i] = await dispImage(img[i],cv,ct);
 	//colors[i] = new Array(3);
 	colors[i] = getColor(images[i].data,width,height);
 	}
@@ -45,8 +45,7 @@ function resizeGetColor(img,width,height){
 }
 
 function getColor(image,width,height){
-	let colorsCal = Array(3);
-	colorsCal.fill(0)
+	let colorsCal = [0, 0, 0];
 	for (let j = 0; j < width * height; j++){
 		colorsCal[0] = colorsCal[0] + image[4*j];
 		colorsCal[1] = colorsCal[1] + image[4*j+1];
