@@ -1,4 +1,4 @@
-function makeMosaic(){
+async function makeMosaic(){
 	const subWidth = 100;
 	const subHeight = 70;
 	const mateWidth = 10;
