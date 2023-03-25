@@ -7,8 +7,8 @@ async function makeMosaic(){
 	const subImage = await resizeImage(subImage_origin,subWidth,subHeight);
 	const materialImage = document.getElementById("materialImage").files;
 	const materialImagesColors = await resizeGetColor(materialImage,mateWidth,mateHeight);
-	const materialImages = materialImagesColors[0];
-	const imageColors = materialImagesColors[1];
+	let materialImages = materialImagesColors[0];
+	let imageColors = materialImagesColors[1];
 	await getMosaicImage(subImage,materialImages,imageColors,subWidth,subHeight,mateWidth,mateHeight);
 }
 const submitButton = document.getElementById("submitButton");
@@ -81,7 +81,8 @@ async function getMosaicImage(subImage, images, colors, subWidth, subHeight, mat
 			minD = Math.min(...d);
 			near = d.indexOf(minD);
                         await ct.putImageData(images[near], x * mateWidth, y * mateHeight);
-			colors[near][0] = 1500;
+			colors.splice(near, 1);
+			images.splice(near, 1);
 		}
 	}
 	const png = cv.toDataURL();
