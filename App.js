@@ -1,6 +1,6 @@
 async function makeMosaic(){
-	const subWidth = 100;
-	const subHeight = 70;
+	const subWidth = 50;
+	const subHeight = 35;
 	const mateWidth = 10;
 	const mateHeight = 8;
 	const subImage_origin = document.getElementById('subImage').files[0];
