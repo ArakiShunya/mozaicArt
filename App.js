@@ -9,7 +9,7 @@ async function makeMosaic(){
 	const materialImagesColors = await resizeGetColor(materialImage,mateWidth,mateHeight);
 	let materialImages = materialImagesColors[0];
 	let imageColors = materialImagesColors[1];
-	getMosaicImage(subImage,materialImages,imageColors,subWidth,subHeight,mateWidth,mateHeight);
+	getMosaicImageTest(subImage,materialImages,imageColors,subWidth,subHeight,mateWidth,mateHeight);
 }
 const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', makeMosaic);
@@ -59,6 +59,20 @@ function getColor(image,width,height){
 	return color;
 }
 
+function getMosaicImageTest(subImage, images, colors, subWidth, subHeight, mateWidth, mateHeight){
+	let cv = document.getElementById('cv');
+	cv.width = 20 * mateWidth;
+	cv.height = 20 * mateHeight;
+	let ct = cv.getContext('2d');
+	for (let x = 0; x < 20; x++){
+		for (let y =0; y<20; y++){
+		    ct.putImageData(images[y+x*20)],x*mateWidth,y*mateHeight);
+		}
+	}
+	const png = cv.toDataURL();
+	document.getElementById("png").src = png;
+}
+	
 function getMosaicImage(subImage, images, colors, subWidth, subHeight, mateWidth, mateHeight){
 	let cv = document.getElementById('cv');
 	let minD = 0;
@@ -66,7 +80,7 @@ function getMosaicImage(subImage, images, colors, subWidth, subHeight, mateWidth
 	let dColor = Array(3);
 	cv.width = subWidth * mateWidth;
 	cv.height = subHeight * mateHeight;
-	let ct =cv.getContext('2d');
+	let ct = cv.getContext('2d');
 	for (let x = 0; x < subWidth; x++){
 		for (let y = 0; y < subHeight; y++){
 			let d = Array(colors.length);
