@@ -94,10 +94,10 @@ function getMosaicImage(subImage, images, colors, subWidth, subHeight, mateWidth
 			minD = Math.min(...d);
 			near = d.indexOf(minD);
                         ct.putImageData(images[near], x * mateWidth, y * mateHeight);
-			colors.splice(near, 1);
-			images.splice(near, 1);
-			console.log(colors);
-			console.log(images);
+			//colors.splice(near, 1);
+			//images.splice(near, 1);
+			//console.log(colors);
+			//console.log(images);
 		}
 	}
 	const png = cv.toDataURL();
