@@ -19,6 +19,12 @@ margin:auto;
 text-align: center;
 }
 
+.boxButton{
+  width:100%;
+  margin:auto;
+  text-align：center;
+}
+
 #cvTest{
   visibility:hidden;
 }
