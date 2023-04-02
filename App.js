@@ -48,7 +48,7 @@ async function resizeGetColor(img,width,height,reuse){
 	Array.prototype.push.apply(colorsSet, colors);
 	Array.prototype.push.apply(imagesSet, images);
 	}
-	console.log(imagesSet);
+	//console.log(imagesSet);
 	return [imagesSet, colorsSet];
 }
 
@@ -104,6 +104,8 @@ function getMosaicImage(subImage, images, colors, subWidth, subHeight, mateWidth
                         ct.putImageData(images[near], x * mateWidth, y * mateHeight);
 			colors.splice(near, 1);
 			images.splice(near, 1);
+			console.log(colors.length);
+			console.log(images.length);
 			//console.log(colors);
 			//console.log(images);
 		}
