@@ -43,11 +43,13 @@ async function resizeGetColor(img,width,height,reuse){
 	colors[i] = getColor(images[i].data,width,height);
 	}
 	let colorsSet = [];
+	let imagesSet = [];
 	for (let i=0; i < reuse; i++){
 	Array.prototype.push.apply(colorsSet, colors);
+	Array.prototype.push.apply(imagesSet, images);
 	}
-	console.log(colorsSet);
-	return [images, colorsSet];
+	console.log(imagesSet);
+	return [imagesSet, colorsSet];
 }
 
 function getColor(image,width,height){
