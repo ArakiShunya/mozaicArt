@@ -69,12 +69,12 @@ function getColor(image,width,height){
 
 function getMosaicImageTest(subImage, images, colors, subWidth, subHeight, mateWidth, mateHeight){
 	let cv = document.getElementById('cv');
-	cv.width = 30*3 * mateWidth;
-	cv.height = 20*3 * mateHeight;
+	cv.width = 60 * mateWidth;
+	cv.height = 30 * mateHeight;
 	let ct = cv.getContext('2d');
-	for (let x = 0; x < 30*3; x++){
-		for (let y =0; y<20*3; y++){
-		    ct.putImageData(images[y+x*30*3],x*mateWidth,y*mateHeight);
+	for (let x = 0; x < 60; x++){
+		for (let y =0; y<30; y++){
+		    ct.putImageData(images[y+x*60],x*mateWidth,y*mateHeight);
 		}
 	}
 	const png = cv.toDataURL();
