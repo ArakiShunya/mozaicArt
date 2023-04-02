@@ -3,10 +3,11 @@ async function makeMosaic(){
 	const subHeight = 35;
 	const mateWidth = 10;
 	const mateHeight = 8;
+	const reuse = 3;
 	const subImage_origin = document.getElementById('subImage').files[0];
 	const subImage = await resizeImage(subImage_origin,subWidth,subHeight);
 	const materialImage = document.getElementById("materialImage").files;
-	const materialImagesColors = await resizeGetColor(materialImage,mateWidth,mateHeight);
+	const materialImagesColors = await resizeGetColor(materialImage,mateWidth,mateHeight,reuse);
 	let materialImages = materialImagesColors[0];
 	let imageColors = materialImagesColors[1];
 	getMosaicImage(subImage,materialImages,imageColors,subWidth,subHeight,mateWidth,mateHeight);
@@ -28,7 +29,7 @@ async function resizeImage(img,width,height){
 	return color;
 }
 
-async function resizeGetColor(img,width,height){
+async function resizeGetColor(img,width,height,reuse){
 	let images = Array(img.length);
 	let colors = Array(img.length);
 	colors.fill(0);
@@ -41,7 +42,11 @@ async function resizeGetColor(img,width,height){
 	//colors[i] = new Array(3);
 	colors[i] = getColor(images[i].data,width,height);
 	}
-	return [images, colors];
+	let colorsSet = [];
+	for (let i=0; i < reuse; i++){
+	colorsSet.append(colors);
+	}
+	return [images, colorsSet];
 }
 
 function getColor(image,width,height){
