@@ -1,26 +1,40 @@
-async function makeMosaic(){
-	const subWidth = 50;
-	const subHeight = 35;
-	const mateWidth = 7;
-	const mateHeight = 5;
-	const reuse = 3;
+const subWidth = 50;
+const subHeight = 35;
+const mateWidth = 7;
+const mateHeight = 5;
+const reuse = 3;
+
+let images = [];
+let colors = [];
+let subColor = [];
+	
+let cv = document.getElementById("cvTest");
+let ct = cv.getContext('2d', {willReadFrequently:true});
+cv.width = mateWidth;
+cv.height = mateHeight;
+
+async function dispImages(){
 	const subImage_origin = document.getElementById('subImage').files[0];
-	const subImage = await resizeImage(subImage_origin,subWidth,subHeight);
+	subColor = await resizeImage(subImage_origin,subWidth,subHeight);
 	const materialImage = document.getElementById("materialImage").files;
-	const materialImagesColors = await resizeGetColor(materialImage,mateWidth,mateHeight,reuse);
-	let materialImages = materialImagesColors[0];
-	let imageColors = materialImagesColors[1];
-	getMosaicImageTest(subImage,materialImages,imageColors,subWidth,subHeight,mateWidth,mateHeight);
+	dispMateImage(materialImage,mateWidth,mateHeight,reuse);
 }
 const submitButton = document.getElementById("submitButton");
-submitButton.addEventListener('click', makeMosaic);
+submitButton.addEventListener('click', dispImages);
+
+function getMosaic(){
+getMosaicImageTest(subColor,images,colors,subWidth,subHeight,mateWidth,mateHeight);
+}
+const mosaicButton = document.getElementById("mosaicButton");
+mosaicButton.addEventListener('click', getMosaic);
 
 async function resizeImage(img,width,height){
-	let cv = document.getElementById("cvTest");
-	let ct = cv.getContext('2d');
-	cv.width = width;
-        cv.height = height;
-	const image = await dispImage(img,cv,ct);
+	let cvSub = document.getElementById("cv");
+	cvSub.width = width;
+        cvSub.height = height;
+	let ctSub = cvSub.getContext('2d');
+	await dispImage(img,cvSub,ctSub);
+	const image = ctSub.getImageData(0,0,cvSub.width,cvSub.height);
 	let color = Array(width*height);
 	for (let i = 0; i < color.length; i++){
 		color[i] = new Array(3);
@@ -29,18 +43,9 @@ async function resizeImage(img,width,height){
 	return color;
 }
 
-async function resizeGetColor(img,width,height,reuse){
-	let images = Array(img.length);
-	let colors = Array(img.length);
-	colors.fill(0);
-	let cv = document.getElementById("cvTest");
-	let ct = cv.getContext('2d', {willReadFrequently:true});
-	cv.width = width;
-        cv.height = height;
+async function dispMateImage(img,width,height,reuse){
 	for (let i = 0; i < img.length; i++){
-	images[i] = await dispImage(img[i],cv,ct);
-	//colors[i] = new Array(3);
-	colors[i] = getColor(images[i].data,width,height);
+	await dispImage(img[i],cv,ct);
 	}
 	let colorsSet = [];
 	let imagesSet = [];
@@ -51,6 +56,14 @@ async function resizeGetColor(img,width,height,reuse){
 	console.log(colors);
 	return [imagesSet, colorsSet];
 }
+
+function getImage(){
+	let image = ct.getImageData(0, 0, cv.width, cv.height)
+	let color = getColor(image.data,width,height)
+	Array.prototype.push.apply(images, image);
+	Array.prototype.push.apply(colors, color);
+}
+cv.addEventListener('change', getImage);
 
 function getColor(image,width,height){
 	let colorsCal = [0, 0, 0];
@@ -116,8 +129,6 @@ async function dispImage(img,cv,ct){
     let image = new Image();
     image.src = await convert2DataUrl(img);
     ct.drawImage(image,0,0,cv.width,cv.height);
-    let color = ct.getImageData(0, 0, cv.width, cv.height);
-    return color;
 }
 
 async function convert2DataUrl(img) {
