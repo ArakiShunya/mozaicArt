@@ -66,7 +66,7 @@ function getMosaicImageTest(subImage, images, colors, subWidth, subHeight, mateW
 	let ct = cv.getContext('2d');
 	for (let x = 0; x < 20; x++){
 		for (let y =0; y<20; y++){
-		    ct.putImageData(images[y+x*20)],x*mateWidth,y*mateHeight);
+		    ct.putImageData(images[y+x*20],x*mateWidth,y*mateHeight);
 		}
 	}
 	const png = cv.toDataURL();
