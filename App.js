@@ -104,8 +104,6 @@ function getMosaicImage(subImage, images, colors, subWidth, subHeight, mateWidth
                         ct.putImageData(images[near], x * mateWidth, y * mateHeight);
 			colors.splice(near, 1);
 			images.splice(near, 1);
-			console.log(colors.length);
-			console.log(images.length);
 			//console.log(colors);
 			//console.log(images);
 		}
