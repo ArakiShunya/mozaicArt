@@ -16,7 +16,7 @@ const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener('click', makeMosaic);
 
 async function resizeImage(img,width,height){
-	let cv = document.getElementById("cv");
+	let cv = document.getElementById("cvTest");
 	let ct = cv.getContext('2d');
 	cv.width = width;
         cv.height = height;
