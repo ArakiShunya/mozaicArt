@@ -33,7 +33,7 @@ async function resizeGetColor(img,width,height,reuse){
 	let images = Array(img.length);
 	let colors = Array(img.length);
 	colors.fill(0);
-	let cv = document.getElementById("cv");
+	let cv = document.getElementById("cvTest");
 	let ct = cv.getContext('2d', {willReadFrequently:true});
 	cv.width = width;
         cv.height = height;
